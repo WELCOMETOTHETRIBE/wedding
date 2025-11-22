@@ -1,0 +1,178 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          UserRole  @default(GUEST)
+  createdAt     DateTime  @default(now())
+  accounts      Account[]
+  sessions      Session[]
+  rsvps         RSVP[]
+  photos        Photo[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum UserRole {
+  ADMIN
+  GUEST
+}
+
+enum MealPreference {
+  Beef
+  Fish
+  Veg
+  Kids
+}
+
+enum PhotoStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum RegistryItemType {
+  EXTERNAL
+  CASH
+}
+
+model RSVP {
+  id              String           @id @default(cuid())
+  userId          String?
+  name            String
+  email           String
+  partySize       Int
+  attending       Boolean          @default(true)
+  mealPreference  MealPreference?
+  allergies       String?
+  songRequest     String?
+  notes           String?          @db.Text
+  confirmationCode String          @unique @default(cuid())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  user            User?            @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([email])
+  @@index([attending])
+  @@index([confirmationCode])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  start       DateTime
+  end         DateTime?
+  locationName String
+  address     String?
+  mapUrl      String?
+  icsUid      String   @unique @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([start])
+}
+
+model Gallery {
+  id            String   @id @default(cuid())
+  title         String
+  description   String?  @db.Text
+  coverImageUrl String?
+  isPublic      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  photos        Photo[]
+}
+
+model Photo {
+  id            String       @id @default(cuid())
+  galleryId    String
+  uploaderName String?
+  uploaderEmail String?
+  imageUrl     String
+  width        Int
+  height       Int
+  status       PhotoStatus  @default(PENDING)
+  exifJson     Json?
+  createdAt    DateTime     @default(now())
+  gallery      Gallery      @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  userId       String?
+  user         User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([galleryId])
+  @@index([status])
+  @@index([userId])
+}
+
+model RegistryItem {
+  id            String            @id @default(cuid())
+  title         String
+  description   String?           @db.Text
+  imageUrl      String?
+  externalUrl   String?
+  price         Float?
+  purchasedCount Int              @default(0)
+  desiredCount  Int?
+  sort          Int               @default(0)
+  type          RegistryItemType
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  valueJson Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
