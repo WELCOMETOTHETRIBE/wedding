@@ -52,12 +52,12 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen">
       {/* Hero Image Section - Full Screen */}
-      <section className="relative w-full h-screen">
+      <section className="relative w-full h-screen overflow-hidden">
         <Image
           src="/images/hero-image.png"
           alt="Victoria & Maximillion"
           fill
-          className="object-cover"
+          className="object-contain"
           priority
           sizes="100vw"
         />
