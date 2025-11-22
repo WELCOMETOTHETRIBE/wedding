@@ -10,7 +10,7 @@ export async function Navigation() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
         <Link href="/" className="font-display text-2xl font-bold text-forest">
-          {process.env.COUPLE_NAME_1 || "Alex"} & {process.env.COUPLE_NAME_2 || "Jordan"}
+          {process.env.COUPLE_NAME_1 || "Victoria"} & {process.env.COUPLE_NAME_2 || "Maximillion"}
         </Link>
         <div className="flex items-center gap-4">
           <Link href="/schedule" className="text-sm font-medium hover:text-forest transition-colors">

@@ -47,26 +47,28 @@ async function getCeremonyEvent() {
 export default async function HomePage() {
   const heroPhotos = await getHeroPhotos()
   const ceremonyEvent = await getCeremonyEvent()
-  const weddingDate = ceremonyEvent?.start || new Date(process.env.WEDDING_DATE || "2024-06-15T16:00:00Z")
+  const weddingDate = ceremonyEvent?.start || new Date(process.env.WEDDING_DATE || "2026-08-26T16:00:00Z")
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-champagne to-background">
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/images/hero-image.png"
-            alt="Hero"
-            fill
-            className="object-contain opacity-25"
-            priority
-            sizes="100vw"
-          />
-        </div>
-        <div className="relative z-10 text-center px-4 py-20 max-w-4xl mx-auto">
+      {/* Hero Image Section - Full Screen */}
+      <section className="relative w-full h-screen">
+        <Image
+          src="/images/hero-image.png"
+          alt="Victoria & Maximillion"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+      </section>
+
+      {/* Content Section - Below Image */}
+      <section className="py-20 px-4 bg-background">
+        <div className="max-w-4xl mx-auto text-center">
           <Monogram className="mx-auto mb-8" />
           <h1 className="font-display text-5xl md:text-7xl font-bold text-forest mb-4">
-            {process.env.COUPLE_NAME_1 || "Alex"} & {process.env.COUPLE_NAME_2 || "Jordan"}
+            {process.env.COUPLE_NAME_1 || "Victoria"} & {process.env.COUPLE_NAME_2 || "Maximillion"}
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
             {formatDate(weddingDate)}

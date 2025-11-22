@@ -5,8 +5,8 @@ interface MonogramProps {
 }
 
 export function Monogram({ className }: MonogramProps) {
-  const name1 = process.env.COUPLE_NAME_1 || "A"
-  const name2 = process.env.COUPLE_NAME_2 || "J"
+  const name1 = process.env.COUPLE_NAME_1 || "V"
+  const name2 = process.env.COUPLE_NAME_2 || "M"
   const initial1 = name1.charAt(0).toUpperCase()
   const initial2 = name2.charAt(0).toUpperCase()
 

@@ -51,7 +51,7 @@ export async function sendRSVPConfirmation(rsvp: RSVP) {
       <body style="font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #121212; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
           <h1 style="font-family: 'Playfair Display', serif; color: #1D3B2A; font-size: 32px; margin: 0;">
-            ${process.env.COUPLE_NAME_1 || "Alex"} & ${process.env.COUPLE_NAME_2 || "Jordan"}
+            ${process.env.COUPLE_NAME_1 || "Victoria"} & ${process.env.COUPLE_NAME_2 || "Maximillion"}
           </h1>
         </div>
         
@@ -120,7 +120,7 @@ export async function sendPhotoApprovalNotification(email: string, _photoUrl: st
       <body style="font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #121212; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
           <h1 style="font-family: 'Playfair Display', serif; color: #1D3B2A; font-size: 32px; margin: 0;">
-            ${process.env.COUPLE_NAME_1 || "Alex"} & ${process.env.COUPLE_NAME_2 || "Jordan"}
+            ${process.env.COUPLE_NAME_1 || "Victoria"} & ${process.env.COUPLE_NAME_2 || "Maximillion"}
           </h1>
         </div>
         
