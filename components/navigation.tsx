@@ -18,6 +18,7 @@ export async function Navigation() {
             Schedule
           </Link>
           <Link href="/gallery" className="text-sm font-medium hover:text-forest transition-colors">
+            {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <Image className="h-4 w-4 inline mr-1" />
             Gallery
           </Link>

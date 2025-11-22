@@ -133,6 +133,7 @@ export function PhotoUploadForm() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
             {files.map((file, index) => (
               <div key={index} className="relative aspect-square group">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={URL.createObjectURL(file)}
                   alt={`Preview ${index + 1}`}

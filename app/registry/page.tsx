@@ -31,8 +31,8 @@ export default async function RegistryPage() {
             Registry
           </h1>
           <p className="text-lg text-muted-foreground">
-            Your presence is the greatest gift, but if you'd like to celebrate with us in another
-            way, we've listed a few ideas below.
+            Your presence is the greatest gift, but if you&apos;d like to celebrate with us in another
+            way, we&apos;ve listed a few ideas below.
           </p>
         </div>
 

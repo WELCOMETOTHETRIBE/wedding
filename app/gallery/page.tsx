@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma"
-import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { GalleryLightbox } from "@/components/gallery-lightbox"
 

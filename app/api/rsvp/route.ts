@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     const data = rsvpSchema.parse(body)
 
     // Check for existing RSVP by email
-    const existing = await prisma.rSVP.findUnique({
+    const existing = await prisma.rSVP.findFirst({
       where: { email: data.email },
     })
 

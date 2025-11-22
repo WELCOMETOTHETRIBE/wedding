@@ -8,7 +8,14 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "@typescript-eslint/no-explicit-any": "warn"
+    "@typescript-eslint/no-explicit-any": "warn",
+    "jsx-a11y/alt-text": ["warn", {
+      "elements": ["img", "object", "area", "input[type=\"image\"]"],
+      "img": ["Image"],
+      "object": ["Object"],
+      "area": ["Area"],
+      "input[type=\"image\"]": ["InputImage"]
+    }]
   }
 }
 

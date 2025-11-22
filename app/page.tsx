@@ -115,10 +115,10 @@ export default async function HomePage() {
             <p>
               We met in the most unexpected way and knew from the start that we were meant to be
               together. After years of adventures, laughter, and building our life together, we
-              can't wait to celebrate this next chapter with all of you.
+              can&apos;t wait to celebrate this next chapter with all of you.
             </p>
             <p>
-              Join us as we say "I do" and begin our journey as husband and wife. Your presence
+              Join us as we say &quot;I do&quot; and begin our journey as husband and wife. Your presence
               would make our day even more special.
             </p>
           </div>
@@ -205,10 +205,10 @@ export default async function HomePage() {
         <div className="max-w-2xl mx-auto text-center">
           <Heart className="h-12 w-12 text-forest mx-auto mb-6" />
           <h2 className="font-display text-4xl md:text-5xl font-bold text-forest mb-6">
-            We Can't Wait to Celebrate With You!
+            We Can&apos;t Wait to Celebrate With You!
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Please let us know if you'll be joining us by responding to your invitation.
+            Please let us know if you&apos;ll be joining us by responding to your invitation.
           </p>
           <Button asChild size="lg" className="text-lg px-8">
             <Link href="/rsvp">RSVP Now</Link>

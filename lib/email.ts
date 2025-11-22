@@ -2,7 +2,6 @@ import { Resend } from "resend"
 import { RSVP } from "@prisma/client"
 import { generateICS } from "./ics"
 import { prisma } from "./prisma"
-import { formatDateTime } from "./utils"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -101,7 +100,7 @@ export async function sendRSVPConfirmation(rsvp: RSVP) {
   }
 }
 
-export async function sendPhotoApprovalNotification(email: string, photoUrl: string) {
+export async function sendPhotoApprovalNotification(email: string, _photoUrl: string) {
   const emailHtml = `
     <!DOCTYPE html>
     <html>

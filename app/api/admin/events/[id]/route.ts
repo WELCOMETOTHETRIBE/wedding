@@ -27,7 +27,15 @@ export async function PUT(
     const body = await request.json()
     const data = eventSchema.parse(body)
 
-    const updateData: any = {}
+    const updateData: {
+      title?: string
+      description?: string | null
+      start?: Date
+      end?: Date | null
+      locationName?: string
+      address?: string | null
+      mapUrl?: string | null
+    } = {}
     if (data.title) updateData.title = data.title
     if (data.description !== undefined) updateData.description = data.description
     if (data.start) updateData.start = new Date(data.start)

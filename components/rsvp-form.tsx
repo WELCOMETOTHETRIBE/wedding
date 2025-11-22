@@ -141,7 +141,7 @@ export function RSVPForm({ existingRSVP }: RSVPFormProps) {
           <div className="space-y-2">
             <Label htmlFor="mealPreference">Meal Preference</Label>
             <Select
-              onValueChange={(value) => setValue("mealPreference", value as any)}
+              onValueChange={(value) => setValue("mealPreference", value as "Beef" | "Fish" | "Veg" | "Kids" | undefined)}
               defaultValue={existingRSVP?.mealPreference || undefined}
             >
               <SelectTrigger>

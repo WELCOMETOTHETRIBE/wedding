@@ -21,10 +21,6 @@ export function PhotoManagement() {
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<"ALL" | "PENDING" | "APPROVED" | "REJECTED">("PENDING")
 
-  useEffect(() => {
-    fetchPhotos()
-  }, [filter])
-
   const fetchPhotos = async () => {
     try {
       const response = await fetch(`/api/admin/photos?status=${filter}`)
@@ -36,6 +32,11 @@ export function PhotoManagement() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchPhotos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter])
 
   const updatePhotoStatus = async (photoId: string, status: "APPROVED" | "REJECTED") => {
     try {

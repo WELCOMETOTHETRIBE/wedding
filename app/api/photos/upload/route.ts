@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
-import { z } from "zod"
 
 // Simplified upload handler - in production, integrate with UploadThing or Supabase
 export async function POST(request: NextRequest) {

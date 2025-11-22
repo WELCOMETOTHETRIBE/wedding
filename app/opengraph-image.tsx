@@ -25,8 +25,8 @@ export default function Image() {
           color: "#1D3B2A",
         }}
       >
-        <div>{process.env.COUPLE_NAME_1 || "Alex"} & {process.env.COUPLE_NAME_2 || "Jordan"}</div>
-        <div style={{ fontSize: 48, marginTop: 20, color: "#666" }}>
+        <div style={{ display: "flex" }}>{process.env.COUPLE_NAME_1 || "Alex"} & {process.env.COUPLE_NAME_2 || "Jordan"}</div>
+        <div style={{ display: "flex", fontSize: 48, marginTop: 20, color: "#666" }}>
           Wedding Celebration
         </div>
       </div>

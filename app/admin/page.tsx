@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AdminTabs } from "@/components/admin-tabs"
-import { Users, Calendar, Image, Gift, Mail } from "lucide-react"
+import { Calendar, Image, Gift, Mail } from "lucide-react"
 
 async function getStats() {
   try {
@@ -76,6 +76,7 @@ export default async function AdminPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Photos</CardTitle>
+              {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <Image className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>

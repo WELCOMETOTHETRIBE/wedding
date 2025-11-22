@@ -38,9 +38,16 @@ export function GalleryLightbox({ photos }: GalleryLightboxProps) {
     if (selectedIndex === null) return
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeLightbox()
-      if (e.key === "ArrowLeft") navigate("prev")
-      if (e.key === "ArrowRight") navigate("next")
+      if (e.key === "Escape") {
+        setSelectedIndex(null)
+        document.body.style.overflow = ""
+      }
+      if (e.key === "ArrowLeft") {
+        setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : photos.length - 1))
+      }
+      if (e.key === "ArrowRight") {
+        setSelectedIndex((prev) => (prev !== null && prev < photos.length - 1 ? prev + 1 : 0))
+      }
     }
 
     window.addEventListener("keydown", handleKeyDown)

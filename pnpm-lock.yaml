@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@auth/prisma-adapter':
         specifier: ^2.4.2
-        version: 2.11.1(@prisma/client@5.22.0(prisma@5.22.0))
+        version: 2.11.1(@prisma/client@5.22.0(prisma@5.22.0))(nodemailer@7.0.10)
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.10.0(react-hook-form@7.66.1(react@18.3.1))
@@ -82,10 +82,13 @@ importers:
         version: 14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-auth:
         specifier: ^5.0.0-beta.15
-        version: 5.0.0-beta.30(next@14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: 5.0.0-beta.30(next@14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nodemailer@7.0.10)(react@18.3.1)
       next-themes:
         specifier: ^0.2.1
         version: 0.2.1(next@14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      nodemailer:
+        specifier: ^7.0.10
+        version: 7.0.10
       postcss:
         specifier: ^8.4.33
         version: 8.5.6
@@ -2821,6 +2824,10 @@ packages:
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
 
+  nodemailer@7.0.10:
+    resolution: {integrity: sha512-Us/Se1WtT0ylXgNFfyFSx4LElllVLJXQjWi2Xz17xWw7amDKO2MLtFnVp1WACy7GkVGs+oBlRopVNUzlrGSw1w==}
+    engines: {node: '>=6.0.0'}
+
   nopt@7.2.1:
     resolution: {integrity: sha512-taM24ViiimT/XntxbPyJQzCG+p4EKOpgD3mxFwW38mGjVUrfERQOeY4EDHjdnptttfHuHQXFx+lTP08Q+mLa/w==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -3655,25 +3662,29 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
 
-  '@auth/core@0.41.0':
+  '@auth/core@0.41.0(nodemailer@7.0.10)':
     dependencies:
       '@panva/hkdf': 1.2.1
       jose: 6.1.2
       oauth4webapi: 3.8.3
       preact: 10.24.3
       preact-render-to-string: 6.5.11(preact@10.24.3)
+    optionalDependencies:
+      nodemailer: 7.0.10
 
-  '@auth/core@0.41.1':
+  '@auth/core@0.41.1(nodemailer@7.0.10)':
     dependencies:
       '@panva/hkdf': 1.2.1
       jose: 6.1.2
       oauth4webapi: 3.8.3
       preact: 10.24.3
       preact-render-to-string: 6.5.11(preact@10.24.3)
+    optionalDependencies:
+      nodemailer: 7.0.10
 
-  '@auth/prisma-adapter@2.11.1(@prisma/client@5.22.0(prisma@5.22.0))':
+  '@auth/prisma-adapter@2.11.1(@prisma/client@5.22.0(prisma@5.22.0))(nodemailer@7.0.10)':
     dependencies:
-      '@auth/core': 0.41.1
+      '@auth/core': 0.41.1(nodemailer@7.0.10)
       '@prisma/client': 5.22.0(prisma@5.22.0)
     transitivePeerDependencies:
       - '@simplewebauthn/browser'
@@ -6260,11 +6271,13 @@ snapshots:
 
   negotiator@0.6.3: {}
 
-  next-auth@5.0.0-beta.30(next@14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+  next-auth@5.0.0-beta.30(next@14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nodemailer@7.0.10)(react@18.3.1):
     dependencies:
-      '@auth/core': 0.41.0
+      '@auth/core': 0.41.0(nodemailer@7.0.10)
       next: 14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
+    optionalDependencies:
+      nodemailer: 7.0.10
 
   next-themes@0.2.1(next@14.1.0(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -6324,6 +6337,8 @@ snapshots:
       - babel-plugin-macros
 
   node-releases@2.0.27: {}
+
+  nodemailer@7.0.10: {}
 
   nopt@7.2.1:
     dependencies:

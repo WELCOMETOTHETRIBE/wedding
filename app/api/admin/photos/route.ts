@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
+import { PhotoStatus } from "@prisma/client"
 
 export async function GET(request: NextRequest) {
   const session = await auth()
@@ -12,9 +13,9 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const status = searchParams.get("status")
 
-  const where: any = {}
-  if (status && status !== "ALL") {
-    where.status = status
+  const where: { status?: PhotoStatus } = {}
+  if (status && status !== "ALL" && ["PENDING", "APPROVED", "REJECTED"].includes(status)) {
+    where.status = status as PhotoStatus
   }
 
   const photos = await prisma.photo.findMany({
