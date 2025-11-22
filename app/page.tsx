@@ -47,7 +47,7 @@ async function getCeremonyEvent() {
 export default async function HomePage() {
   const heroPhotos = await getHeroPhotos()
   const ceremonyEvent = await getCeremonyEvent()
-  const weddingDate = ceremonyEvent?.start || new Date(process.env.WEDDING_DATE || "2026-08-26T16:00:00Z")
+  const weddingDate = ceremonyEvent?.start || new Date(process.env.WEDDING_DATE || "2026-09-03T16:00:00Z")
 
   return (
     <main className="min-h-screen">
