@@ -3,7 +3,14 @@ import { RSVP } from "@prisma/client"
 import { generateICS } from "./ics"
 import { prisma } from "./prisma"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy initialization of Resend to avoid build-time errors when API key is not set
+function getResend() {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    throw new Error("RESEND_API_KEY is not configured")
+  }
+  return new Resend(apiKey)
+}
 
 export async function sendRSVPConfirmation(rsvp: RSVP) {
   const events = await prisma.event.findMany({
@@ -87,6 +94,7 @@ export async function sendRSVPConfirmation(rsvp: RSVP) {
   `
 
   try {
+    const resend = getResend()
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "noreply@example.com",
       to: rsvp.email,
@@ -132,6 +140,7 @@ export async function sendPhotoApprovalNotification(email: string, _photoUrl: st
   `
 
   try {
+    const resend = getResend()
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "noreply@example.com",
       to: email,
